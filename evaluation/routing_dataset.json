@@ -1,0 +1,83 @@
+[
+  {
+    "question": "How many vacation days do employees receive?",
+    "expected_tier": "small"
+  },
+  {
+    "question": "What is the company's remote work policy?",
+    "expected_tier": "small"
+  },
+  {
+    "question": "Where can I submit an expense report?",
+    "expected_tier": "small"
+  },
+  {
+    "question": "What is the maximum amount I can claim for business travel?",
+    "expected_tier": "small"
+  },
+  {
+    "question": "How do I request annual leave?",
+    "expected_tier": "small"
+  },
+  {
+    "question": "What happens if I miss the expense submission deadline?",
+    "expected_tier": "small"
+  },
+  {
+    "question": "Can employees work remotely?",
+    "expected_tier": "small"
+  },
+  {
+    "question": "What documents are required for an expense claim?",
+    "expected_tier": "small"
+  },
+  {
+    "question": "How do I change my office attendance schedule?",
+    "expected_tier": "small"
+  },
+  {
+    "question": "Who approves vacation requests?",
+    "expected_tier": "small"
+  },
+
+  {
+    "question": "Compare the remote work policy with the office attendance policy.",
+    "expected_tier": "large"
+  },
+  {
+    "question": "Analyze the differences between the travel reimbursement rules and the entertainment expense rules.",
+    "expected_tier": "large"
+  },
+  {
+    "question": "Explain why employees must submit expenses within the specified deadline and what the consequences are.",
+    "expected_tier": "large"
+  },
+  {
+    "question": "Compare the vacation policy for employees with less than one year of service and employees with more than one year of service.",
+    "expected_tier": "large"
+  },
+  {
+    "question": "Evaluate whether the current remote work policy provides enough flexibility for employees who live far from the office.",
+    "expected_tier": "large"
+  },
+  {
+    "question": "What are the pros and cons of the current expense approval process?",
+    "expected_tier": "large"
+  },
+  {
+    "question": "Analyze how the company's vacation policy and remote work policy interact with each other.",
+    "expected_tier": "large"
+  },
+  {
+    "question": "Compare the reimbursement limits across different categories and explain which category provides the greatest allowance.",
+    "expected_tier": "large"
+  },
+  {
+    "question": "Evaluate the differences between domestic and international business travel reimbursement.",
+    "expected_tier": "large"
+  },
+  {
+    "question": "Recommend the most appropriate policy for an employee who needs to work remotely for several consecutive weeks and explain your reasoning.",
+    "expected_tier": "large"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "annotations": {"list": []},
+  "editable": true,
+  "panels": [
+    {"title":"HTTP Request Rate","type":"timeseries","gridPos":{"h":8,"w":12,"x":0,"y":0},"targets":[{"expr":"sum(rate(http_requests_total[1m]))","refId":"A"}]},
+    {"title":"HTTP p95 Latency","type":"timeseries","gridPos":{"h":8,"w":12,"x":12,"y":0},"targets":[{"expr":"histogram_quantile(0.95, sum by (le) (rate(http_request_latency_seconds_bucket[5m]))) * 1000","refId":"A"}]},
+    {"title":"LLM Requests by Model","type":"timeseries","gridPos":{"h":8,"w":12,"x":0,"y":8},"targets":[{"expr":"sum by (model) (rate(llm_requests_total[5m]))","refId":"A"}]},
+    {"title":"LLM p95 Latency","type":"timeseries","gridPos":{"h":8,"w":12,"x":12,"y":8},"targets":[{"expr":"histogram_quantile(0.95, sum by (le, model) (rate(llm_latency_seconds_bucket[5m]))) * 1000","refId":"A"}]},
+    {"title":"Cache Hit Rate","type":"timeseries","gridPos":{"h":8,"w":12,"x":0,"y":16},"targets":[{"expr":"sum(rate(cache_requests_total{result=\"hit\"}[5m])) / clamp_min(sum(rate(cache_requests_total{result=~\"hit|miss\"}[5m])), 0.000001)","refId":"A"}]},
+    {"title":"RAG Retrieval p95 Latency","type":"timeseries","gridPos":{"h":8,"w":12,"x":12,"y":16},"targets":[{"expr":"histogram_quantile(0.95, rate(rag_retrieval_latency_seconds_bucket[5m])) * 1000","refId":"A"}]}
+  ],
+  "schemaVersion": 39,
+  "title": "Production RAG Overview",
+  "time": {"from":"now-30m","to":"now"},
+  "timezone":"browser"
+}

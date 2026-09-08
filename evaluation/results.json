@@ -1,0 +1,511 @@
+{
+  "metrics": {
+    "recall_at_1": 1.0,
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "average_latency_ms": 902.9564516129033,
+    "retrieval_latency": 111.37467400112655,
+    "llm_latency": 590.25,
+    "latency_ms": 701.62,
+    "average_retrieval_latency_ms": 157.52608641912136,
+    "average_llm_latency_ms": 745.4306451612903
+  },
+  "results": [
+    {
+      "id": "q001",
+      "question": "How many days per week can employees work remotely?",
+      "expected_document": "remote_work.md",
+      "expected_answer": "Employees may work remotely up to three days per week, subject to manager approval and role suitability.",
+      "retrieved_documents": [
+        "remote_work.md",
+        "remote_work.md",
+        "leave_policy.md",
+        "leave_policy.md",
+        "leave_policy.md"
+      ],
+      "retrieval_latency": 211.57904000028793,
+      "llm_latency": 1532.99,
+      "latency_ms": 1744.57
+    },
+    {
+      "id": "q002",
+      "question": "What is required for a fully remote arrangement?",
+      "expected_document": "remote_work.md",
+      "expected_answer": "Fully remote arrangements require director-level sign-off and are reviewed every six months.",
+      "retrieved_documents": [
+        "remote_work.md",
+        "leave_policy.md",
+        "expense_policy.md",
+        "security_policy.md",
+        "expense_policy.md"
+      ],
+      "retrieval_latency": 232.34111700003268,
+      "llm_latency": 1057.23,
+      "latency_ms": 1289.57
+    },
+    {
+      "id": "q003",
+      "question": "During what hours must remote employees be reachable?",
+      "expected_document": "remote_work.md",
+      "expected_answer": "Remote employees must be reachable during core hours, 10:00-16:00 local time.",
+      "retrieved_documents": [
+        "remote_work.md",
+        "remote_work.md",
+        "leave_policy.md",
+        "security_policy.md",
+        "leave_policy.md"
+      ],
+      "retrieval_latency": 210.4290070001298,
+      "llm_latency": 644.3,
+      "latency_ms": 854.73
+    },
+    {
+      "id": "q004",
+      "question": "Who provides equipment for remote work, and what happens to it at offboarding?",
+      "expected_document": "remote_work.md",
+      "expected_answer": "The company provides remote work equipment, which must be returned upon request or at offboarding, per the Equipment and Asset Policy.",
+      "retrieved_documents": [
+        "remote_work.md",
+        "security_policy.md",
+        "leave_policy.md",
+        "security_policy.md",
+        "benefits.md"
+      ],
+      "retrieval_latency": 146.06183099931513,
+      "llm_latency": 660.18,
+      "latency_ms": 806.24
+    },
+    {
+      "id": "q005",
+      "question": "What are the standard working hours?",
+      "expected_document": "remote_work.md",
+      "expected_answer": "Standard working hours are 40 hours per week, with core collaboration hours of 10:00-16:00 local time.",
+      "retrieved_documents": [
+        "remote_work.md",
+        "remote_work.md",
+        "leave_policy.md",
+        "benefits.md",
+        "leave_policy.md"
+      ],
+      "retrieval_latency": 123.05572900004336,
+      "llm_latency": 652.1,
+      "latency_ms": 775.16
+    },
+    {
+      "id": "q006",
+      "question": "Does working remotely change an employee's tax residency obligations?",
+      "expected_document": "remote_work.md",
+      "expected_answer": "No, remote work does not change an employee's tax residency obligations, which remain the employee's responsibility.",
+      "retrieved_documents": [
+        "remote_work.md",
+        "leave_policy.md",
+        "leave_policy.md",
+        "leave_policy.md",
+        "benefits.md"
+      ],
+      "retrieval_latency": 126.61360099991725,
+      "llm_latency": 826.54,
+      "latency_ms": 953.15
+    },
+    {
+      "id": "q007",
+      "question": "What devices must employees use to access production systems and customer data?",
+      "expected_document": "security_policy.md",
+      "expected_answer": "Employees must use company-issued devices for accessing production systems and customer data.",
+      "retrieved_documents": [
+        "security_policy.md",
+        "security_policy.md",
+        "remote_work.md",
+        "expense_policy.md",
+        "leave_policy.md"
+      ],
+      "retrieval_latency": 127.10558700018737,
+      "llm_latency": 675.11,
+      "latency_ms": 802.22
+    },
+    {
+      "id": "q008",
+      "question": "Is two-factor authentication mandatory?",
+      "expected_document": "security_policy.md",
+      "expected_answer": "Yes, two-factor authentication is mandatory for all internal and customer-facing systems.",
+      "retrieved_documents": [
+        "security_policy.md",
+        "security_policy.md",
+        "expense_policy.md",
+        "expense_policy.md",
+        "remote_work.md"
+      ],
+      "retrieval_latency": 122.70348499987449,
+      "llm_latency": 679.95,
+      "latency_ms": 802.65
+    },
+    {
+      "id": "q009",
+      "question": "How quickly must a suspected security incident be reported?",
+      "expected_document": "security_policy.md",
+      "expected_answer": "Suspected security incidents must be reported to the IT Security team within 24 hours of discovery.",
+      "retrieved_documents": [
+        "security_policy.md",
+        "remote_work.md",
+        "security_policy.md",
+        "expense_policy.md",
+        "remote_work.md"
+      ],
+      "retrieval_latency": 263.6085350004578,
+      "llm_latency": 610.68,
+      "latency_ms": 874.29
+    },
+    {
+      "id": "q010",
+      "question": "What happens if an employee violates the security policy?",
+      "expected_document": "security_policy.md",
+      "expected_answer": "Violations may result in disciplinary action up to and including termination, per the Code of Conduct.",
+      "retrieved_documents": [
+        "security_policy.md",
+        "security_policy.md",
+        "remote_work.md",
+        "leave_policy.md",
+        "remote_work.md"
+      ],
+      "retrieval_latency": 181.6618799985008,
+      "llm_latency": 681.05,
+      "latency_ms": 862.71
+    },
+    {
+      "id": "q011",
+      "question": "Can employees use company devices for personal use?",
+      "expected_document": "security_policy.md",
+      "expected_answer": "Incidental personal use of company devices and accounts is permitted within reasonable limits.",
+      "retrieved_documents": [
+        "security_policy.md",
+        "security_policy.md",
+        "remote_work.md",
+        "leave_policy.md",
+        "remote_work.md"
+      ],
+      "retrieval_latency": 128.85978200029058,
+      "llm_latency": 651.05,
+      "latency_ms": 779.91
+    },
+    {
+      "id": "q012",
+      "question": "Can employees install unauthorized software on company devices?",
+      "expected_document": "security_policy.md",
+      "expected_answer": "No, installation of unauthorized software is prohibited without IT approval.",
+      "retrieved_documents": [
+        "security_policy.md",
+        "security_policy.md",
+        "remote_work.md",
+        "leave_policy.md",
+        "leave_policy.md"
+      ],
+      "retrieval_latency": 137.5244790015131,
+      "llm_latency": 670.8,
+      "latency_ms": 808.32
+    },
+    {
+      "id": "q013",
+      "question": "How many days of annual leave do employees receive after one year of service?",
+      "expected_document": "leave_policy.md",
+      "expected_answer": "Employees who have completed one year of service receive 15 days of annual leave per calendar year.",
+      "retrieved_documents": [
+        "leave_policy.md",
+        "leave_policy.md",
+        "leave_policy.md",
+        "remote_work.md",
+        "remote_work.md"
+      ],
+      "retrieval_latency": 131.29510299950198,
+      "llm_latency": 676.37,
+      "latency_ms": 807.67
+    },
+    {
+      "id": "q014",
+      "question": "How does annual leave work for employees with less than one year of service?",
+      "expected_document": "leave_policy.md",
+      "expected_answer": "Employees with less than one year of service accrue annual leave on a monthly basis.",
+      "retrieved_documents": [
+        "leave_policy.md",
+        "leave_policy.md",
+        "leave_policy.md",
+        "remote_work.md",
+        "benefits.md"
+      ],
+      "retrieval_latency": 120.99350100106676,
+      "llm_latency": 632.4,
+      "latency_ms": 753.39
+    },
+    {
+      "id": "q015",
+      "question": "How far in advance should annual leave normally be requested?",
+      "expected_document": "leave_policy.md",
+      "expected_answer": "Annual leave should normally be requested at least three business days before the intended date.",
+      "retrieved_documents": [
+        "leave_policy.md",
+        "leave_policy.md",
+        "leave_policy.md",
+        "remote_work.md",
+        "expense_policy.md"
+      ],
+      "retrieval_latency": 127.09911499950977,
+      "llm_latency": 680.19,
+      "latency_ms": 807.29
+    },
+    {
+      "id": "q016",
+      "question": "How many paid sick days do employees receive per year?",
+      "expected_document": "leave_policy.md",
+      "expected_answer": "Employees receive 10 days of paid sick leave per calendar year, available from the first day of employment.",
+      "retrieved_documents": [
+        "leave_policy.md",
+        "leave_policy.md",
+        "remote_work.md",
+        "remote_work.md",
+        "leave_policy.md"
+      ],
+      "retrieval_latency": 138.41484499971557,
+      "llm_latency": 666.44,
+      "latency_ms": 804.85
+    },
+    {
+      "id": "q017",
+      "question": "When is a medical certificate required for sick leave?",
+      "expected_document": "leave_policy.md",
+      "expected_answer": "A medical certificate submitted to HR is required when sick leave is taken for more than three consecutive days.",
+      "retrieved_documents": [
+        "leave_policy.md",
+        "leave_policy.md",
+        "leave_policy.md",
+        "remote_work.md",
+        "expense_policy.md"
+      ],
+      "retrieval_latency": 170.88252099892998,
+      "llm_latency": 609.41,
+      "latency_ms": 780.29
+    },
+    {
+      "id": "q018",
+      "question": "How much paid parental leave does the company provide beyond statutory requirements?",
+      "expected_document": "leave_policy.md",
+      "expected_answer": "The company provides two weeks of fully paid parental leave in addition to statutory entitlements.",
+      "retrieved_documents": [
+        "leave_policy.md",
+        "leave_policy.md",
+        "leave_policy.md",
+        "remote_work.md",
+        "remote_work.md"
+      ],
+      "retrieval_latency": 126.84823699964909,
+      "llm_latency": 641.04,
+      "latency_ms": 767.89
+    },
+    {
+      "id": "q019",
+      "question": "What happens to unused annual leave at the end of the year?",
+      "expected_document": "leave_policy.md",
+      "expected_answer": "Up to 5 unused annual leave days may be carried into the next calendar year, and any remaining balance expires on January 31.",
+      "retrieved_documents": [
+        "leave_policy.md",
+        "leave_policy.md",
+        "leave_policy.md",
+        "benefits.md",
+        "expense_policy.md"
+      ],
+      "retrieval_latency": 119.41158999979962,
+      "llm_latency": 688.8,
+      "latency_ms": 808.21
+    },
+    {
+      "id": "q020",
+      "question": "Within how many days must business expenses be submitted?",
+      "expected_document": "expense_policy.md",
+      "expected_answer": "Business expenses must be submitted within 30 days of the expense date via the finance portal.",
+      "retrieved_documents": [
+        "expense_policy.md",
+        "expense_policy.md",
+        "leave_policy.md",
+        "benefits.md",
+        "leave_policy.md"
+      ],
+      "retrieval_latency": 133.578323002439,
+      "llm_latency": 592.7,
+      "latency_ms": 726.28
+    },
+    {
+      "id": "q021",
+      "question": "What approval is required for an expense of $100 or more?",
+      "expected_document": "expense_policy.md",
+      "expected_answer": "Expenses of $100 or more require both manager and finance approval.",
+      "retrieved_documents": [
+        "expense_policy.md",
+        "expense_policy.md",
+        "security_policy.md",
+        "leave_policy.md",
+        "remote_work.md"
+      ],
+      "retrieval_latency": 135.26553900010185,
+      "llm_latency": 603.23,
+      "latency_ms": 738.5
+    },
+    {
+      "id": "q022",
+      "question": "When are approved expense reimbursements processed?",
+      "expected_document": "expense_policy.md",
+      "expected_answer": "Reimbursements are processed within one payroll cycle following approval.",
+      "retrieved_documents": [
+        "expense_policy.md",
+        "expense_policy.md",
+        "benefits.md",
+        "leave_policy.md",
+        "leave_policy.md"
+      ],
+      "retrieval_latency": 128.00940699889907,
+      "llm_latency": 1098.55,
+      "latency_ms": 1226.56
+    },
+    {
+      "id": "q023",
+      "question": "How should business travel be booked?",
+      "expected_document": "expense_policy.md",
+      "expected_answer": "Business travel must be booked through the approved corporate travel portal wherever available.",
+      "retrieved_documents": [
+        "expense_policy.md",
+        "expense_policy.md",
+        "security_policy.md",
+        "security_policy.md",
+        "leave_policy.md"
+      ],
+      "retrieval_latency": 183.78768699767534,
+      "llm_latency": 709.86,
+      "latency_ms": 893.65
+    },
+    {
+      "id": "q024",
+      "question": "What is the daily per diem for meals during business travel?",
+      "expected_document": "expense_policy.md",
+      "expected_answer": "A daily per diem of $60 applies for meals not covered by a hosted event.",
+      "retrieved_documents": [
+        "expense_policy.md",
+        "expense_policy.md",
+        "remote_work.md",
+        "leave_policy.md",
+        "leave_policy.md"
+      ],
+      "retrieval_latency": 271.11277699805214,
+      "llm_latency": 787.66,
+      "latency_ms": 1058.77
+    },
+    {
+      "id": "q025",
+      "question": "What happens if a personal expense is submitted in error?",
+      "expected_document": "expense_policy.md",
+      "expected_answer": "Personal expenses submitted in error will be deducted from the next payroll cycle.",
+      "retrieved_documents": [
+        "expense_policy.md",
+        "expense_policy.md",
+        "security_policy.md",
+        "benefits.md",
+        "security_policy.md"
+      ],
+      "retrieval_latency": 324.2379519979295,
+      "llm_latency": 707.95,
+      "latency_ms": 1032.19
+    },
+    {
+      "id": "q026",
+      "question": "When does health insurance coverage take effect for new employees?",
+      "expected_document": "benefits.md",
+      "expected_answer": "Health insurance coverage is effective from the first day of the month following the employee's start date.",
+      "retrieved_documents": [
+        "benefits.md",
+        "leave_policy.md",
+        "leave_policy.md",
+        "remote_work.md",
+        "benefits.md"
+      ],
+      "retrieval_latency": 129.74421000035363,
+      "llm_latency": 696.18,
+      "latency_ms": 825.92
+    },
+    {
+      "id": "q027",
+      "question": "When can dependents be added to the health insurance plan?",
+      "expected_document": "benefits.md",
+      "expected_answer": "Dependents may be added during the annual open enrollment period or within 30 days of a qualifying life event.",
+      "retrieved_documents": [
+        "benefits.md",
+        "leave_policy.md",
+        "leave_policy.md",
+        "expense_policy.md",
+        "benefits.md"
+      ],
+      "retrieval_latency": 135.084724999615,
+      "llm_latency": 979.19,
+      "latency_ms": 1114.27
+    },
+    {
+      "id": "q028",
+      "question": "When are employees eligible to enroll in the retirement plan?",
+      "expected_document": "benefits.md",
+      "expected_answer": "Employees are eligible to enroll in the company retirement plan after 90 days of service.",
+      "retrieved_documents": [
+        "benefits.md",
+        "leave_policy.md",
+        "leave_policy.md",
+        "leave_policy.md",
+        "benefits.md"
+      ],
+      "retrieval_latency": 127.19730100070592,
+      "llm_latency": 912.0,
+      "latency_ms": 1039.2
+    },
+    {
+      "id": "q029",
+      "question": "What is the company's retirement contribution match?",
+      "expected_document": "benefits.md",
+      "expected_answer": "The company matches employee contributions up to 4% of base salary.",
+      "retrieved_documents": [
+        "benefits.md",
+        "benefits.md",
+        "leave_policy.md",
+        "remote_work.md",
+        "leave_policy.md"
+      ],
+      "retrieval_latency": 133.0166139996436,
+      "llm_latency": 854.87,
+      "latency_ms": 987.89
+    },
+    {
+      "id": "q030",
+      "question": "Does the company provide free lunch every day?",
+      "expected_document": null,
+      "expected_answer": null,
+      "retrieved_documents": [
+        "expense_policy.md",
+        "leave_policy.md",
+        "benefits.md",
+        "remote_work.md",
+        "remote_work.md"
+      ],
+      "retrieval_latency": 124.4104849974974,
+      "llm_latency": 639.28,
+      "latency_ms": 763.69
+    },
+    {
+      "id": "q031",
+      "question": "When is incidental personal use permitted?",
+      "expected_document": "security_policy.md",
+      "expected_answer": "unknown",
+      "retrieved_documents": [
+        "security_policy.md",
+        "security_policy.md",
+        "expense_policy.md",
+        "leave_policy.md",
+        "leave_policy.md"
+      ],
+      "retrieval_latency": 111.37467400112655,
+      "llm_latency": 590.25,
+      "latency_ms": 701.62
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "production-rag"
+version = "1.0.0"
+description = "Production-oriented RAG service with model routing, Redis caching, evaluation, and observability"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-q"

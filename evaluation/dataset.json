@@ -1,0 +1,188 @@
+[
+  {
+    "id": "q001",
+    "question": "How many days per week can employees work remotely?",
+    "expected_document": "remote_work.md",
+    "expected_answer": "Employees may work remotely up to three days per week, subject to manager approval and role suitability."
+  },
+  {
+    "id": "q002",
+    "question": "What is required for a fully remote arrangement?",
+    "expected_document": "remote_work.md",
+    "expected_answer": "Fully remote arrangements require director-level sign-off and are reviewed every six months."
+  },
+  {
+    "id": "q003",
+    "question": "During what hours must remote employees be reachable?",
+    "expected_document": "remote_work.md",
+    "expected_answer": "Remote employees must be reachable during core hours, 10:00-16:00 local time."
+  },
+  {
+    "id": "q004",
+    "question": "Who provides equipment for remote work, and what happens to it at offboarding?",
+    "expected_document": "remote_work.md",
+    "expected_answer": "The company provides remote work equipment, which must be returned upon request or at offboarding, per the Equipment and Asset Policy."
+  },
+  {
+    "id": "q005",
+    "question": "What are the standard working hours?",
+    "expected_document": "remote_work.md",
+    "expected_answer": "Standard working hours are 40 hours per week, with core collaboration hours of 10:00-16:00 local time."
+  },
+  {
+    "id": "q006",
+    "question": "Does working remotely change an employee's tax residency obligations?",
+    "expected_document": "remote_work.md",
+    "expected_answer": "No, remote work does not change an employee's tax residency obligations, which remain the employee's responsibility."
+  },
+  {
+    "id": "q007",
+    "question": "What devices must employees use to access production systems and customer data?",
+    "expected_document": "security_policy.md",
+    "expected_answer": "Employees must use company-issued devices for accessing production systems and customer data."
+  },
+  {
+    "id": "q008",
+    "question": "Is two-factor authentication mandatory?",
+    "expected_document": "security_policy.md",
+    "expected_answer": "Yes, two-factor authentication is mandatory for all internal and customer-facing systems."
+  },
+  {
+    "id": "q009",
+    "question": "How quickly must a suspected security incident be reported?",
+    "expected_document": "security_policy.md",
+    "expected_answer": "Suspected security incidents must be reported to the IT Security team within 24 hours of discovery."
+  },
+  {
+    "id": "q010",
+    "question": "What happens if an employee violates the security policy?",
+    "expected_document": "security_policy.md",
+    "expected_answer": "Violations may result in disciplinary action up to and including termination, per the Code of Conduct."
+  },
+  {
+    "id": "q011",
+    "question": "Can employees use company devices for personal use?",
+    "expected_document": "security_policy.md",
+    "expected_answer": "Incidental personal use of company devices and accounts is permitted within reasonable limits."
+  },
+  {
+    "id": "q012",
+    "question": "Can employees install unauthorized software on company devices?",
+    "expected_document": "security_policy.md",
+    "expected_answer": "No, installation of unauthorized software is prohibited without IT approval."
+  },
+  {
+    "id": "q013",
+    "question": "How many days of annual leave do employees receive after one year of service?",
+    "expected_document": "leave_policy.md",
+    "expected_answer": "Employees who have completed one year of service receive 15 days of annual leave per calendar year."
+  },
+  {
+    "id": "q014",
+    "question": "How does annual leave work for employees with less than one year of service?",
+    "expected_document": "leave_policy.md",
+    "expected_answer": "Employees with less than one year of service accrue annual leave on a monthly basis."
+  },
+  {
+    "id": "q015",
+    "question": "How far in advance should annual leave normally be requested?",
+    "expected_document": "leave_policy.md",
+    "expected_answer": "Annual leave should normally be requested at least three business days before the intended date."
+  },
+  {
+    "id": "q016",
+    "question": "How many paid sick days do employees receive per year?",
+    "expected_document": "leave_policy.md",
+    "expected_answer": "Employees receive 10 days of paid sick leave per calendar year, available from the first day of employment."
+  },
+  {
+    "id": "q017",
+    "question": "When is a medical certificate required for sick leave?",
+    "expected_document": "leave_policy.md",
+    "expected_answer": "A medical certificate submitted to HR is required when sick leave is taken for more than three consecutive days."
+  },
+  {
+    "id": "q018",
+    "question": "How much paid parental leave does the company provide beyond statutory requirements?",
+    "expected_document": "leave_policy.md",
+    "expected_answer": "The company provides two weeks of fully paid parental leave in addition to statutory entitlements."
+  },
+  {
+    "id": "q019",
+    "question": "What happens to unused annual leave at the end of the year?",
+    "expected_document": "leave_policy.md",
+    "expected_answer": "Up to 5 unused annual leave days may be carried into the next calendar year, and any remaining balance expires on January 31."
+  },
+  {
+    "id": "q020",
+    "question": "Within how many days must business expenses be submitted?",
+    "expected_document": "expense_policy.md",
+    "expected_answer": "Business expenses must be submitted within 30 days of the expense date via the finance portal."
+  },
+  {
+    "id": "q021",
+    "question": "What approval is required for an expense of $100 or more?",
+    "expected_document": "expense_policy.md",
+    "expected_answer": "Expenses of $100 or more require both manager and finance approval."
+  },
+  {
+    "id": "q022",
+    "question": "When are approved expense reimbursements processed?",
+    "expected_document": "expense_policy.md",
+    "expected_answer": "Reimbursements are processed within one payroll cycle following approval."
+  },
+  {
+    "id": "q023",
+    "question": "How should business travel be booked?",
+    "expected_document": "expense_policy.md",
+    "expected_answer": "Business travel must be booked through the approved corporate travel portal wherever available."
+  },
+  {
+    "id": "q024",
+    "question": "What is the daily per diem for meals during business travel?",
+    "expected_document": "expense_policy.md",
+    "expected_answer": "A daily per diem of $60 applies for meals not covered by a hosted event."
+  },
+  {
+    "id": "q025",
+    "question": "What happens if a personal expense is submitted in error?",
+    "expected_document": "expense_policy.md",
+    "expected_answer": "Personal expenses submitted in error will be deducted from the next payroll cycle."
+  },
+  {
+    "id": "q026",
+    "question": "When does health insurance coverage take effect for new employees?",
+    "expected_document": "benefits.md",
+    "expected_answer": "Health insurance coverage is effective from the first day of the month following the employee's start date."
+  },
+  {
+    "id": "q027",
+    "question": "When can dependents be added to the health insurance plan?",
+    "expected_document": "benefits.md",
+    "expected_answer": "Dependents may be added during the annual open enrollment period or within 30 days of a qualifying life event."
+  },
+  {
+    "id": "q028",
+    "question": "When are employees eligible to enroll in the retirement plan?",
+    "expected_document": "benefits.md",
+    "expected_answer": "Employees are eligible to enroll in the company retirement plan after 90 days of service."
+  },
+  {
+    "id": "q029",
+    "question": "What is the company's retirement contribution match?",
+    "expected_document": "benefits.md",
+    "expected_answer": "The company matches employee contributions up to 4% of base salary."
+  },
+  {
+    "id": "q030",
+    "question": "Does the company provide free lunch every day?",
+    "expected_document": null,
+    "expected_answer": null
+  },
+  {
+    "id": "q031",
+    "question": "When is incidental personal use permitted?",
+    "expected_document": "security_policy.md",
+    "expected_answer": "unknown"
+  } 
+]
