@@ -1,252 +1,120 @@
-# Production RAG Service
+# Production RAG API
 
-A production-oriented Retrieval-Augmented Generation (RAG) service built to explore the engineering problems behind reliable LLM applications: **retrieval quality, model routing, latency, caching, observability, and evaluation**.
+## 1. 프로젝트 개요
 
-> Portfolio project for an AI/LLM engineering role. The project intentionally prioritizes measurable system behavior over a large UI or a collection of AI demos.
+**목적**
+AI기능이 서비스로써 시행되기 위한 상황을 직접 다뤄보기 위해 만든 프로젝트입니다. 단순히 프롬프트를 짜고 답변 품질을 확인하는 데 그치지 않고, 검색 품질 · 모델 라우팅 · 지연시간(latency) · 캐싱 · 관측성(observability) · 평가(evaluation)까지, RAG 서비스를 실제로 운영하는 데 필요한 엔지니어링 문제들을 하나의 시스템 안에서 측정 가능하게 구현했습니다.
 
-## What I built
+**선택 이유**
+AI 개발 직무에서 모델을 잘 쓰는 것 이상으로 모델을 안정적으로 제공하는 것이 실제 산업에서 중요하다고 생각했습니다. 따라서 UI나 데모 기능을 늘리는 대신 지연시간을 구간별로 측정하고, 캐시 장애 시에도 서비스가 죽지 않도록 설계하고, 모델 라우팅 결정을 로그로 남겨 검증 가능하게 만드는 데 집중했습니다.
 
-- **FastAPI** service with versioned `/api/v1` endpoints
-- Local semantic retrieval using **BGE-M3 + FAISS**
-- Deterministic **small/large model routing** based on query complexity
-- **Redis** response caching with cache-aside behavior
-- Graceful degradation when Redis is unavailable
-- **Prometheus** application metrics
-- **OpenTelemetry** tracing hooks for request, retrieval, and inference spans
-- **Grafana** dashboard provisioning for latency, request rate, model traffic, and cache hit rate
-- Reproducible retrieval and routing evaluation datasets
-- Unit tests for routing, validation, cache behavior, and cache-key normalization
-- Docker Compose development environment
+**진행 방식**
+개인 프로젝트로, 기능 단위 커밋과 이슈 기록을 통해 작업을 관리했습니다. (실험/평가 결과는 `evaluation/` 디렉토리에 결과 파일로 남겨 재현 가능하도록 구성)
 
-## Architecture
+---
 
-```mermaid
-flowchart TD
-    C[Client] --> API[FastAPI /api/v1/chat]
-    API --> CACHE[(Redis Cache)]
-    CACHE -- hit --> RESP[Response]
-    CACHE -- miss --> RAG[RAG Service]
-    RAG --> EMB[BGE-M3 Embeddings]
-    EMB --> FAISS[(FAISS Index)]
-    FAISS --> CTX[Top-K Context]
-    CTX --> ROUTER[Model Router]
-    ROUTER --> SMALL[Small Model]
-    ROUTER --> LARGE[Large Model]
-    SMALL --> RESP
-    LARGE --> RESP
-    API --> METRICS[Prometheus Metrics]
-    API --> TRACE[OpenTelemetry]
-    METRICS --> GRAFANA[Grafana]
-```
+## 2. 기술 스택
 
-### Request flow
-
-1. Normalize the user query and calculate a SHA-256 cache key.
-2. Check Redis for a cached response.
-3. On a cache miss, retrieve the top 3 knowledge-base chunks using normalized BGE-M3 embeddings and FAISS inner-product search.
-4. Route the question to the small or large model using deterministic complexity rules.
-5. Generate an answer constrained to the retrieved context.
-6. Cache the response and return routing + latency metadata.
-7. Export application metrics and create OpenTelemetry spans when an OTLP endpoint is configured.
-
-## Engineering decisions
-
-### 1. Why cache the final answer?
-
-The current workload is a policy-assistant style workload where identical questions are likely to recur. Caching the final response avoids both retrieval and LLM inference on repeated requests.
-
-Redis is treated as an **optimization, not a correctness dependency**. If Redis is unavailable, the service falls back to the normal RAG path.
-
-### 2. Why deterministic model routing?
-
-The router is deliberately simple and explainable. Short factual questions use the small tier; comparison, analysis, recommendation, and long questions use the large tier.
-
-This creates a measurable baseline for a future learned router or classifier while making the quality/cost trade-off visible in the API response.
-
-### 3. Why measure retrieval and inference separately?
-
-End-to-end latency alone hides the bottleneck. The service records retrieval and LLM latency independently so that optimization work can target the dominant component.
-
-The current benchmark shows that LLM generation dominates retrieval latency, which makes **inference optimization, routing, caching, and batching** more promising next experiments than prematurely optimizing the vector index.
-
-### 4. Why FAISS instead of a managed vector database?
-
-The knowledge base is intentionally small. FAISS keeps the benchmark self-contained and fast to reproduce locally. A production deployment could replace the vector-store implementation with OpenSearch or another persistent vector-search backend without changing the RAG service interface.
-
-## Evaluation
-
-### Retrieval baseline
-
-The included benchmark contains **31 questions** over a small synthetic company-policy knowledge base.
-
-| Metric | Result |
-|---|---:|
-| Recall@1 | **100.0%** |
-| Recall@3 | **100.0%** |
-| Recall@5 | **100.0%** |
-| Mean retrieval latency | **157.53 ms** |
-| Mean LLM latency | **745.43 ms** |
-| Mean end-to-end latency | **902.96 ms** |
-
-These results are a **baseline for this small dataset**, not a claim of general RAG quality. The next meaningful experiment is to increase dataset diversity and compare embeddings, chunking, hybrid retrieval, and reranking.
-
-Full report: [`evaluation/REPORT.md`](evaluation/REPORT.md)
-
-### Model routing evaluation
-
-The routing dataset contains 20 labeled questions covering factual, comparison, analysis, recommendation, and long-query cases.
-
-Run:
-
-```bash
-make routing-report
-```
-
-The evaluator writes `evaluation/routing_results.json` so routing decisions can be inspected individually rather than reporting accuracy alone.
-
-## Observability
-
-Prometheus metrics include:
-
-- HTTP request count and latency
-- Retrieval request count, latency, and number of returned documents
-- LLM request count, errors, and latency by model
-- Redis hits/misses/errors and operation latency
-
-Grafana is provisioned automatically with a dashboard containing request rate, HTTP p95 latency, LLM traffic, LLM p95 latency, cache hit rate, and retrieval p95 latency.
-
-OpenTelemetry spans cover the important application boundaries:
-
-```text
-HTTP request
-  ├── cache.get
-  ├── rag.retrieval
-  └── llm.inference
-```
-
-Set `OTEL_EXPORTER_OTLP_ENDPOINT` to connect the service to an OTLP-compatible collector.
-
-## API
-
-### `POST /api/v1/chat`
-
-```json
-{
-  "message": "How many days of annual leave do employees receive?"
-}
-```
-
-Example response shape:
-
-```json
-{
-  "answer": "...",
-  "model": "gpt-5-nano",
-  "model_tier": "small",
-  "routing_reason": "simple_query",
-  "latency_ms": 123.45,
-  "generation_latency_ms": 119.20
-}
-```
-
-### `POST /api/v1/search`
-
-Returns the top retrieved chunks and their similarity scores. This endpoint makes retrieval behavior independently inspectable.
-
-### `GET /api/v1/health`
-
-Returns `ok` when Redis is reachable and `degraded` when the cache is unavailable. The application can continue serving requests during a Redis outage.
-
-### `GET /metrics`
-
-Prometheus scrape endpoint.
-
-## Run locally
-
-### 1. Configure environment
-
-```bash
-cp .env.example .env
-```
-
-Set `OPENAI_API_KEY` and, if desired, change `SMALL_MODEL` / `LARGE_MODEL`.
-
-### 2. Start the stack
-
-```bash
-docker compose up --build
-```
-
-Services:
-
-| Service | Address |
+| 구분 | 사용 기술 |
 |---|---|
-| API | `http://localhost:8000` |
-| API docs | `http://localhost:8000/docs` |
-| Prometheus | `http://localhost:9090` |
-| Grafana | `http://localhost:3000` |
-| Redis | `localhost:6379` |
+| Language | Python |
+| Framework | FastAPI |
+| LLM | OpenAI API (gpt-5-nano 등), 자체 구현 모델 라우터 |
+| Retrieval | BGE-M3 임베딩, FAISS (벡터 검색) |
+| Cache | Redis (cache-aside 패턴) |
+| Observability | Prometheus, Grafana, OpenTelemetry |
+| Infra | Docker Compose |
+| Test | pytest |
 
-### 3. Smoke test
+---
 
+## 3. 아키텍처
+
+```
+사용자 요청
+    │
+    ▼
+[쿼리 정규화 + SHA-256 캐시 키 생성]
+    │
+    ▼
+[Redis 캐시 조회] ──(hit)──▶ 캐시된 응답 반환
+    │ (miss)
+    ▼
+[BGE-M3 임베딩 + FAISS 검색] → 관련 문서 Top-3 추출
+    │
+    ▼
+[모델 라우터] → 질문 복잡도에 따라 small / large 모델 결정
+    │
+    ▼
+[LLM 생성] → 검색된 컨텍스트 기반 답변 생성
+    │
+    ▼
+[Redis 캐시 저장] + [응답 반환: 라우팅/지연시간 메타데이터 포함]
+    │
+    └─▶ [Prometheus 메트릭 기록] / [OpenTelemetry 스팬 기록]
+```
+
+Redis는 성능 최적화 목적으로만 사용하며, 장애 시에도 정상 RAG 경로로 시행하도록 설계했습니다.
+
+---
+
+## 4. 주요 기능
+
+**1) 검색 + 생성 (RAG)**
+- `POST /api/v1/chat` — 질문에 대해 검색된 컨텍스트 기반으로 답변 생성
 ```bash
-curl http://localhost:8000/api/v1/health
-curl http://localhost:8000/api/v1/search \
+curl http://localhost:8000/api/v1/chat \
   -H 'Content-Type: application/json' \
-  -d '{"message":"How many annual leave days do employees receive?"}'
+  -d '{"message":"연차는 며칠 제공되나요?"}'
 ```
 
-### 4. Run tests
+**2) 검색 결과 확인**
+- `POST /api/v1/search` — 검색 품질만 독립적으로 점검 가능 (유사도 점수 포함)
 
-```bash
-python -m pip install -r requirements.txt
-make test
-```
+**3) 헬스 체크 / 성능 관측**
+- `GET /api/v1/health` — Redis 장애 시에도 `degraded` 상태로 서비스 지속
+- `GET /metrics` — Prometheus 스크레이핑 엔드포인트
+- Grafana 대시보드: 요청량, HTTP p95 지연시간, 모델별 트래픽, 캐시 히트율, 검색 p95 지연시간
 
-### 5. Run evaluations
+**4) 조건기반 모델 라우팅**
+- 단순 사실 질문 → 소형 모델, 비교/분석/추천/장문 질문 → 대형 모델
+- 라우팅 근거를 응답에 함께 반환해 검증 가능 (`routing_reason`)
 
-```bash
-make routing-report
-```
+---
 
-The full RAG evaluation requires the configured model API and can be run with:
+## 5. 기여도와 역할
 
-```bash
-make eval
-```
+개인 프로젝트로 기획 · 설계 · 구현 · 성능 측정 · 평가 전 과정을 단독으로 수행했습니다.
 
-## Project structure
+---
 
-```text
-app/
-├── api/            # HTTP routes and dependency wiring
-├── cache/          # Redis cache abstraction
-├── core/           # configuration
-├── llm/            # model interface, client adapter, router
-├── monitoring/     # Prometheus + OpenTelemetry
-├── retrieval/      # loading, chunking, vector search
-├── schemas/        # API contracts
-└── services/       # RAG and LLM orchestration
+## 6. 결과 및 성과
 
-data/              # synthetic policy knowledge base
-evaluation/         # datasets, evaluators, reports
-tests/              # unit tests
-monitoring/         # Prometheus and Grafana configuration
-```
+**검색 성능 (31개 질문 벤치마크)**
 
-## Limitations and next steps
+| 지표 | 결과 |
+|---|---|
+| Recall@1 | 100.0% |
+| Recall@3 | 100.0% |
+| Recall@5 | 100.0% |
+| 평균 검색 지연시간 | 157.53 ms |
+| 평균 LLM 지연시간 | 745.43 ms |
+| 평균 End-to-End 지연시간 | 902.96 ms |
 
-This is a portfolio-scale system, not a production deployment. Important next experiments are:
+**문제 해결 사례**
+- gpt-5-nano 사용 시 reasoning 오버헤드로 인한 지연시간 문제를 발견하고, `reasoning_effort="minimal"`, `max_completion_tokens=500` 설정으로 평균 생성 지연시간을 **약 2700ms → 약 850ms로 약 68% 단축**했습니다.
+- 검색/생성 지연시간을 따로 측정한 결과, LLM 생성이 전체 지연시간의 병목임을 확인 — 벡터 인덱스 최적화보다 추론 최적화·라우팅·캐싱·배치 처리가 더 효과적인 성능 향상을 보여준다는 직관을 얻었습니다.
 
-1. Compare embedding models and chunking strategies on a larger labeled dataset.
-2. Add hybrid BM25 + vector retrieval and a reranker.
-3. Add retrieval-level caching and measure cache hit-rate under load.
-4. Replace deterministic routing with an evaluated classifier or learned router.
-5. Benchmark concurrent inference with **Triton or Ray Serve**, including batching and GPU utilization.
-6. Add an OTLP collector and persistent trace storage.
-7. Add load testing and p95/p99 SLO-oriented benchmarks.
-8. Move the vector index to a persistent service such as OpenSearch for multi-instance deployment.
+---
 
-## Why this project
+## 7. 그 외 (배운 점 / 향후 계획)
 
-The project is intentionally centered on the engineering gap between **"an LLM can answer this"** and **"an AI feature can operate reliably as a service."** The main focus is therefore not prompt cleverness, but measurable behavior across retrieval, routing, caching, latency, evaluation, and observability.
+**배운 점**
+- 단일 지연시간 지표만으로는 병목을 특정할 수 없으며, 구간별 분리 측정이 최적화 우선순위 결정에 필수적임을 체감했습니다.
+- 캐시와 같은 최적화 계층은 장애 시 자동 폴백까지 설계해야 실제로 신뢰할 수 있는 컴포넌트가 됩니다.
+
+**향후 계획**
+- 더 크고 다양한 데이터셋으로 임베딩 모델/청킹 전략 비교
+- BM25 + 벡터 하이브리드 검색, 리랭커 도입
+- 조건기반 모델 라우팅 → 학습 기반 라우터로 고도화
+- Triton/Ray Serve 기반 동시 추론 벤치마크 (배칭, GPU 활용률)
