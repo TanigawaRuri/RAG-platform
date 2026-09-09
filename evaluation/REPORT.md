@@ -1,48 +1,50 @@
-# RAG Evaluation Report
+# RAG 평가 보고서
 
-## Dataset
+## 데이터셋
 
-- Questions: 31
-- Evaluation type: source-document retrieval recall
+- 질문 수: 31
+- 평가 방식: 원본 문서 검색 Recall 평가
 
-## Retrieval Quality
+## 검색 품질
 
-| Metric | Score |
+| 평가 지표 | 점수 |
 |---|---:|
 | Recall@1 | 100.0% |
 | Recall@3 | 100.0% |
 | Recall@5 | 100.0% |
 
-## Performance
+## 성능
 
-| Metric | Mean |
+| 평가 지표 | 평균 |
 |---|---:|
-| Retrieval latency | 135.74 ms |
-| LLM latency | 1422.96 ms |
-| End-to-end latency | 1558.70 ms |
+| 문서 검색 지연 시간 | 135.74 ms |
+| LLM 지연 시간 | 1422.96 ms |
+| 전체 요청 지연 시간 | 1558.70 ms |
 
-## Cache Performance (Redis)
+## 캐시 성능 (Redis)
 
-| Metric | Value |
+| 평가 지표 | 값 |
 |---|---:|
-| Cache miss (cold) latency | 1558.70 ms |
-| Cache hit (warm) latency | 0.48 ms |
-| Cache hit confirmation rate | 100.0% |
-| Speedup (miss / hit) | 3260.4x |
+| 캐시 미스 (Cold) 지연 시간 | 1558.70 ms |
+| 캐시 히트 (Warm) 지연 시간 | 0.48 ms |
+| 캐시 히트 확인율 | 100.0% |
+| 성능 향상 배수 (Miss / Hit) | 3260.4x |
 
-## Interpretation
+## 결과 해석
 
-Recall@k is counted as a hit when the expected source document appears in the top-k retrieved results. The current benchmark uses a small synthetic policy knowledge base, so the perfect retrieval score should be treated as a baseline rather than evidence of general retrieval quality.
+Recall@k는 기대하는 원본 문서가 검색 결과 상위 k개 내에 포함된 경우를 적중(hit)으로 계산합니다. 현재 벤치마크는 소규모의 임의의 정책 지식 베이스를 사용하고 있으므로, 완벽한 검색 성능은 일반적인 검색 품질을 입증하는 결과라기보다는 기준선(baseline)으로 해석해야 합니다.
 
-The latency breakdown shows that LLM inference dominates the request path, making inference optimization, model routing, caching, and batching the most promising performance levers.
+지연 시간 분석 결과, 전체 요청 처리 시간에서 LLM 추론이 가장 큰 비중을 차지합니다. 따라서 추론 최적화, 모델 라우팅, 캐싱 및 배치 처리가 성능을 개선할 수 있는 주요 요소로 판단됩니다.
 
-Caching has the largest measured impact of any lever tested so far: for repeated queries, response time drops from a full RAG + LLM round trip (~1559 ms) to a Redis lookup (~0.48 ms), a 3260x improvement. This applies specifically to repeated/identical queries; a production traffic mix of unique and repeated questions will see a smaller blended improvement, so cache hit-rate under real traffic is the number that determines actual production impact.
+현재까지 측정한 최적화 요소 중 가장 큰 성능 개선 효과는 캐싱에서 확인되었습니다. 동일한 질문이 반복되는 경우, 전체 RAG + LLM 요청을 처리하는 시간(약 1559 ms)에서 Redis 조회만 수행하는 시간(0.48 ms)으로 감소하며, 약 3260배의 성능 향상이 발생합니다.
 
-## Next Experiments
+다만 이러한 효과는 반복되거나 동일한 질문에 한정됩니다. 실제 운영 환경에서는 고유한 질문과 반복 질문이 혼합되어 발생하므로 전체적인 평균 성능 향상 폭은 더 작을 수 있습니다. 따라서 실제 운영 환경에서의 캐시 적중률(cache hit-rate)이 캐싱의 실질적인 성능 개선 효과를 결정하는 핵심 지표입니다.
 
-1. Compare embedding models.
-2. Tune chunk size and overlap.
-3. Add hybrid keyword + vector retrieval.
-4. Add a reranker.
-5. Measure cache hit-rate under real (non-repeated) production-like traffic, not just repeated-query benchmarks.
-6. Compare inference backends such as Triton or Ray Serve under concurrent load.
+## 다음 실험
+
+1. 임베딩 모델별 성능 비교
+2. Chunk 크기 및 Overlap 튜닝
+3. 키워드 검색 + 벡터 검색을 결합한 Hybrid Retrieval 적용
+4. Reranker 적용
+5. 반복 질문이 아닌 실제 운영 환경과 유사한 트래픽에서 캐시 적중률 측정
+6. 동시 요청 환경에서 Triton, Ray Serve 등의 추론 백엔드 성능 비교
