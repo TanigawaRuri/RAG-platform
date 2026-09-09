@@ -3,12 +3,13 @@
     "recall_at_1": 1.0,
     "recall_at_3": 1.0,
     "recall_at_5": 1.0,
-    "average_latency_ms": 902.9564516129033,
-    "retrieval_latency": 111.37467400112655,
-    "llm_latency": 590.25,
-    "latency_ms": 701.62,
-    "average_retrieval_latency_ms": 157.52608641912136,
-    "average_llm_latency_ms": 745.4306451612903
+    "average_latency_ms": 1558.6996774193549,
+    "average_retrieval_latency_ms": 135.74354838709678,
+    "average_llm_latency_ms": 1422.956129032258,
+    "average_cache_miss_latency_ms": 1558.6996774193549,
+    "average_cache_hit_latency_ms": 0.4780645161290323,
+    "cache_hit_confirmation_rate": 1.0,
+    "cache_speedup_factor": 3260.4379217273954
   },
   "results": [
     {
@@ -23,9 +24,12 @@
         "leave_policy.md",
         "leave_policy.md"
       ],
-      "retrieval_latency": 211.57904000028793,
-      "llm_latency": 1532.99,
-      "latency_ms": 1744.57
+      "retrieval_latency": 144.71,
+      "llm_latency": 2349.73,
+      "latency_ms": 2494.44,
+      "cache_miss_latency_ms": 2494.44,
+      "cache_hit_latency_ms": 0.5,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q002",
@@ -39,9 +43,12 @@
         "security_policy.md",
         "expense_policy.md"
       ],
-      "retrieval_latency": 232.34111700003268,
-      "llm_latency": 1057.23,
-      "latency_ms": 1289.57
+      "retrieval_latency": 130.51,
+      "llm_latency": 884.73,
+      "latency_ms": 1015.24,
+      "cache_miss_latency_ms": 1015.24,
+      "cache_hit_latency_ms": 0.29,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q003",
@@ -55,9 +62,12 @@
         "security_policy.md",
         "leave_policy.md"
       ],
-      "retrieval_latency": 210.4290070001298,
-      "llm_latency": 644.3,
-      "latency_ms": 854.73
+      "retrieval_latency": 119.95,
+      "llm_latency": 859.29,
+      "latency_ms": 979.24,
+      "cache_miss_latency_ms": 979.24,
+      "cache_hit_latency_ms": 0.39,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q004",
@@ -71,9 +81,12 @@
         "security_policy.md",
         "benefits.md"
       ],
-      "retrieval_latency": 146.06183099931513,
-      "llm_latency": 660.18,
-      "latency_ms": 806.24
+      "retrieval_latency": 136.55,
+      "llm_latency": 862.18,
+      "latency_ms": 998.73,
+      "cache_miss_latency_ms": 998.73,
+      "cache_hit_latency_ms": 0.31,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q005",
@@ -87,9 +100,12 @@
         "benefits.md",
         "leave_policy.md"
       ],
-      "retrieval_latency": 123.05572900004336,
-      "llm_latency": 652.1,
-      "latency_ms": 775.16
+      "retrieval_latency": 112.72,
+      "llm_latency": 1161.92,
+      "latency_ms": 1274.64,
+      "cache_miss_latency_ms": 1274.64,
+      "cache_hit_latency_ms": 0.4,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q006",
@@ -103,9 +119,12 @@
         "leave_policy.md",
         "benefits.md"
       ],
-      "retrieval_latency": 126.61360099991725,
-      "llm_latency": 826.54,
-      "latency_ms": 953.15
+      "retrieval_latency": 139.78,
+      "llm_latency": 1043.08,
+      "latency_ms": 1182.86,
+      "cache_miss_latency_ms": 1182.86,
+      "cache_hit_latency_ms": 0.3,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q007",
@@ -119,9 +138,12 @@
         "expense_policy.md",
         "leave_policy.md"
       ],
-      "retrieval_latency": 127.10558700018737,
-      "llm_latency": 675.11,
-      "latency_ms": 802.22
+      "retrieval_latency": 138.91,
+      "llm_latency": 2698.16,
+      "latency_ms": 2837.07,
+      "cache_miss_latency_ms": 2837.07,
+      "cache_hit_latency_ms": 0.4,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q008",
@@ -135,9 +157,12 @@
         "expense_policy.md",
         "remote_work.md"
       ],
-      "retrieval_latency": 122.70348499987449,
-      "llm_latency": 679.95,
-      "latency_ms": 802.65
+      "retrieval_latency": 125.9,
+      "llm_latency": 792.33,
+      "latency_ms": 918.23,
+      "cache_miss_latency_ms": 918.23,
+      "cache_hit_latency_ms": 0.41,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q009",
@@ -151,9 +176,12 @@
         "expense_policy.md",
         "remote_work.md"
       ],
-      "retrieval_latency": 263.6085350004578,
-      "llm_latency": 610.68,
-      "latency_ms": 874.29
+      "retrieval_latency": 142.22,
+      "llm_latency": 874.17,
+      "latency_ms": 1016.39,
+      "cache_miss_latency_ms": 1016.39,
+      "cache_hit_latency_ms": 0.46,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q010",
@@ -167,9 +195,12 @@
         "leave_policy.md",
         "remote_work.md"
       ],
-      "retrieval_latency": 181.6618799985008,
-      "llm_latency": 681.05,
-      "latency_ms": 862.71
+      "retrieval_latency": 150.23,
+      "llm_latency": 1001.65,
+      "latency_ms": 1151.88,
+      "cache_miss_latency_ms": 1151.88,
+      "cache_hit_latency_ms": 0.49,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q011",
@@ -183,9 +214,12 @@
         "leave_policy.md",
         "remote_work.md"
       ],
-      "retrieval_latency": 128.85978200029058,
-      "llm_latency": 651.05,
-      "latency_ms": 779.91
+      "retrieval_latency": 140.13,
+      "llm_latency": 1241.0,
+      "latency_ms": 1381.13,
+      "cache_miss_latency_ms": 1381.13,
+      "cache_hit_latency_ms": 0.4,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q012",
@@ -199,9 +233,12 @@
         "leave_policy.md",
         "leave_policy.md"
       ],
-      "retrieval_latency": 137.5244790015131,
-      "llm_latency": 670.8,
-      "latency_ms": 808.32
+      "retrieval_latency": 142.61,
+      "llm_latency": 1920.91,
+      "latency_ms": 2063.52,
+      "cache_miss_latency_ms": 2063.52,
+      "cache_hit_latency_ms": 0.35,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q013",
@@ -215,9 +252,12 @@
         "remote_work.md",
         "remote_work.md"
       ],
-      "retrieval_latency": 131.29510299950198,
-      "llm_latency": 676.37,
-      "latency_ms": 807.67
+      "retrieval_latency": 135.33,
+      "llm_latency": 1531.69,
+      "latency_ms": 1667.02,
+      "cache_miss_latency_ms": 1667.02,
+      "cache_hit_latency_ms": 0.41,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q014",
@@ -231,9 +271,12 @@
         "remote_work.md",
         "benefits.md"
       ],
-      "retrieval_latency": 120.99350100106676,
-      "llm_latency": 632.4,
-      "latency_ms": 753.39
+      "retrieval_latency": 139.22,
+      "llm_latency": 1367.39,
+      "latency_ms": 1506.61,
+      "cache_miss_latency_ms": 1506.61,
+      "cache_hit_latency_ms": 0.46,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q015",
@@ -247,9 +290,12 @@
         "remote_work.md",
         "expense_policy.md"
       ],
-      "retrieval_latency": 127.09911499950977,
-      "llm_latency": 680.19,
-      "latency_ms": 807.29
+      "retrieval_latency": 139.2,
+      "llm_latency": 1021.05,
+      "latency_ms": 1160.25,
+      "cache_miss_latency_ms": 1160.25,
+      "cache_hit_latency_ms": 0.33,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q016",
@@ -263,9 +309,12 @@
         "remote_work.md",
         "leave_policy.md"
       ],
-      "retrieval_latency": 138.41484499971557,
-      "llm_latency": 666.44,
-      "latency_ms": 804.85
+      "retrieval_latency": 138.07,
+      "llm_latency": 949.67,
+      "latency_ms": 1087.74,
+      "cache_miss_latency_ms": 1087.74,
+      "cache_hit_latency_ms": 0.48,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q017",
@@ -279,9 +328,12 @@
         "remote_work.md",
         "expense_policy.md"
       ],
-      "retrieval_latency": 170.88252099892998,
-      "llm_latency": 609.41,
-      "latency_ms": 780.29
+      "retrieval_latency": 123.76,
+      "llm_latency": 1249.12,
+      "latency_ms": 1372.88,
+      "cache_miss_latency_ms": 1372.88,
+      "cache_hit_latency_ms": 0.42,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q018",
@@ -295,9 +347,12 @@
         "remote_work.md",
         "remote_work.md"
       ],
-      "retrieval_latency": 126.84823699964909,
-      "llm_latency": 641.04,
-      "latency_ms": 767.89
+      "retrieval_latency": 143.78,
+      "llm_latency": 1243.62,
+      "latency_ms": 1387.4,
+      "cache_miss_latency_ms": 1387.4,
+      "cache_hit_latency_ms": 0.46,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q019",
@@ -311,9 +366,12 @@
         "benefits.md",
         "expense_policy.md"
       ],
-      "retrieval_latency": 119.41158999979962,
-      "llm_latency": 688.8,
-      "latency_ms": 808.21
+      "retrieval_latency": 131.43,
+      "llm_latency": 1913.59,
+      "latency_ms": 2045.02,
+      "cache_miss_latency_ms": 2045.02,
+      "cache_hit_latency_ms": 0.4,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q020",
@@ -327,9 +385,12 @@
         "benefits.md",
         "leave_policy.md"
       ],
-      "retrieval_latency": 133.578323002439,
-      "llm_latency": 592.7,
-      "latency_ms": 726.28
+      "retrieval_latency": 145.76,
+      "llm_latency": 1849.73,
+      "latency_ms": 1995.49,
+      "cache_miss_latency_ms": 1995.49,
+      "cache_hit_latency_ms": 0.38,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q021",
@@ -343,9 +404,12 @@
         "leave_policy.md",
         "remote_work.md"
       ],
-      "retrieval_latency": 135.26553900010185,
-      "llm_latency": 603.23,
-      "latency_ms": 738.5
+      "retrieval_latency": 133.44,
+      "llm_latency": 1485.94,
+      "latency_ms": 1619.38,
+      "cache_miss_latency_ms": 1619.38,
+      "cache_hit_latency_ms": 0.36,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q022",
@@ -359,9 +423,12 @@
         "leave_policy.md",
         "leave_policy.md"
       ],
-      "retrieval_latency": 128.00940699889907,
-      "llm_latency": 1098.55,
-      "latency_ms": 1226.56
+      "retrieval_latency": 150.14,
+      "llm_latency": 1216.04,
+      "latency_ms": 1366.18,
+      "cache_miss_latency_ms": 1366.18,
+      "cache_hit_latency_ms": 0.48,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q023",
@@ -375,9 +442,12 @@
         "security_policy.md",
         "leave_policy.md"
       ],
-      "retrieval_latency": 183.78768699767534,
-      "llm_latency": 709.86,
-      "latency_ms": 893.65
+      "retrieval_latency": 125.26,
+      "llm_latency": 1466.39,
+      "latency_ms": 1591.65,
+      "cache_miss_latency_ms": 1591.65,
+      "cache_hit_latency_ms": 0.42,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q024",
@@ -391,9 +461,12 @@
         "leave_policy.md",
         "leave_policy.md"
       ],
-      "retrieval_latency": 271.11277699805214,
-      "llm_latency": 787.66,
-      "latency_ms": 1058.77
+      "retrieval_latency": 132.14,
+      "llm_latency": 1555.31,
+      "latency_ms": 1687.45,
+      "cache_miss_latency_ms": 1687.45,
+      "cache_hit_latency_ms": 1.18,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q025",
@@ -407,9 +480,12 @@
         "benefits.md",
         "security_policy.md"
       ],
-      "retrieval_latency": 324.2379519979295,
-      "llm_latency": 707.95,
-      "latency_ms": 1032.19
+      "retrieval_latency": 133.07,
+      "llm_latency": 1244.86,
+      "latency_ms": 1377.93,
+      "cache_miss_latency_ms": 1377.93,
+      "cache_hit_latency_ms": 0.57,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q026",
@@ -423,9 +499,12 @@
         "remote_work.md",
         "benefits.md"
       ],
-      "retrieval_latency": 129.74421000035363,
-      "llm_latency": 696.18,
-      "latency_ms": 825.92
+      "retrieval_latency": 146.08,
+      "llm_latency": 2319.6,
+      "latency_ms": 2465.68,
+      "cache_miss_latency_ms": 2465.68,
+      "cache_hit_latency_ms": 0.34,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q027",
@@ -439,9 +518,12 @@
         "expense_policy.md",
         "benefits.md"
       ],
-      "retrieval_latency": 135.084724999615,
-      "llm_latency": 979.19,
-      "latency_ms": 1114.27
+      "retrieval_latency": 143.93,
+      "llm_latency": 1185.38,
+      "latency_ms": 1329.31,
+      "cache_miss_latency_ms": 1329.31,
+      "cache_hit_latency_ms": 0.38,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q028",
@@ -455,9 +537,12 @@
         "leave_policy.md",
         "benefits.md"
       ],
-      "retrieval_latency": 127.19730100070592,
-      "llm_latency": 912.0,
-      "latency_ms": 1039.2
+      "retrieval_latency": 147.74,
+      "llm_latency": 1422.47,
+      "latency_ms": 1570.21,
+      "cache_miss_latency_ms": 1570.21,
+      "cache_hit_latency_ms": 0.41,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q029",
@@ -471,9 +556,12 @@
         "remote_work.md",
         "leave_policy.md"
       ],
-      "retrieval_latency": 133.0166139996436,
-      "llm_latency": 854.87,
-      "latency_ms": 987.89
+      "retrieval_latency": 138.89,
+      "llm_latency": 1771.54,
+      "latency_ms": 1910.43,
+      "cache_miss_latency_ms": 1910.43,
+      "cache_hit_latency_ms": 0.42,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q030",
@@ -487,9 +575,12 @@
         "remote_work.md",
         "remote_work.md"
       ],
-      "retrieval_latency": 124.4104849974974,
-      "llm_latency": 639.28,
-      "latency_ms": 763.69
+      "retrieval_latency": 119.18,
+      "llm_latency": 1657.87,
+      "latency_ms": 1777.05,
+      "cache_miss_latency_ms": 1777.05,
+      "cache_hit_latency_ms": 0.34,
+      "cache_hit_confirmed": true
     },
     {
       "id": "q031",
@@ -503,9 +594,12 @@
         "leave_policy.md",
         "leave_policy.md"
       ],
-      "retrieval_latency": 111.37467400112655,
-      "llm_latency": 590.25,
-      "latency_ms": 701.62
+      "retrieval_latency": 117.41,
+      "llm_latency": 1971.23,
+      "latency_ms": 2088.64,
+      "cache_miss_latency_ms": 2088.64,
+      "cache_hit_latency_ms": 1.88,
+      "cache_hit_confirmed": true
     }
   ]
 }
