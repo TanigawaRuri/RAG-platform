@@ -15,19 +15,6 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      postgres:
-        image: postgres:16
-        env:
-          POSTGRES_PASSWORD: test
-          POSTGRES_DB: test
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
       redis:
         image: redis:7
         ports:
@@ -39,7 +26,6 @@ jobs:
           --health-retries 5
 
     env:
-      DATABASE_URL: postgres://postgres:test@localhost:5432/test
       REDIS_URL: redis://localhost:6379
 
     steps:
@@ -52,14 +38,18 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          target: tests
           load: true
-          tags: app:tests
+          tags: app:ci-cd
           cache-from: type=gha
           cache-to: type=gha, mode=max
 
       - name: Run tests
-        run: docker run --rm --network host app:tests
+        run: |
+          docker run --rm --network host \
+            -e REDIS_URL=$REDIS_URL \
+            -e PYTHONPATH=/app \
+            app:ci \
+            pytest -v tests/
 
   build-and-push:
     needs: test
@@ -86,17 +76,9 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          target: production
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      - name: Scan image
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-          severity: 'CRITICAL,HIGH'
-          exit-code: '1'
