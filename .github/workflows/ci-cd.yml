@@ -48,7 +48,7 @@ jobs:
           docker run --rm --network host \
             -e REDIS_URL=$REDIS_URL \
             -e PYTHONPATH=/app \
-            app:ci \
+            app:ci-cd \
             pytest -v tests/
 
   build-and-push:
