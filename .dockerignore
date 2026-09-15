@@ -8,6 +8,5 @@ venv
 .env
 .idea
 .vscode
-tests
 evaluation
 README.md
