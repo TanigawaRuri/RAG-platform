@@ -52,14 +52,14 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          target: test
+          target: tests
           load: true
-          tags: myapp:test
+          tags: app:tests
           cache-from: type=gha
           cache-to: type=gha, mode=max
 
       - name: Run tests
-        run: docker run --rm --network host myapp:test
+        run: docker run --rm --network host app:tests
 
   build-and-push:
     needs: test
